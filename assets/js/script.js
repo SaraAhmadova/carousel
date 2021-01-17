@@ -8,8 +8,10 @@ let prevSlide = document.querySelector(".slider .prev-btn");
 let index = 0;
 
 modal.addEventListener("click", (e) => {
-    if (e.target == modal) modal.classList.remove("modal");
-    pid = setInterval(intervalSlider, 2000);
+    if (e.target == modal) {
+        modal.classList.remove("modal");
+        pid = setInterval(intervalSlider, 2000);
+    }
 })
 
 imgs.forEach((e, i) => {
@@ -85,7 +87,7 @@ prevSlide.addEventListener("click", (e) => {
     imgEl.classList.add("active");
 })
 
-let intervalSlider=() => {
+let intervalSlider = () => {
     let next = document.querySelector(".next");
     if (next != null) next.classList.remove("next");
     let prev = document.querySelector(".prev");
