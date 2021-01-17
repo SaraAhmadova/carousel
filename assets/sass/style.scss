@@ -1,0 +1,227 @@
+body {
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(#008068, #062d1f);
+}
+
+.container,
+.container2 {
+    margin: 30px;
+    padding: 3rem;
+    display: flex;
+    background-color: rgba(172, 172, 172, 0.281);
+
+    .img-box {
+        width: 20%;
+        margin: 10px;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.container2 {
+    height: 70vh;
+    overflow: hidden;
+
+    .slide-box {
+        width: 70%;
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .images {
+        width: 25%;
+        height: 100%;
+        margin: 0 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            width: 15px;
+            background-color: rgba(24, 59, 52, 0.719);
+            border-radius: 10px;
+
+            &-thumb {
+                background-color: rgba(138, 226, 213, 0.753);
+                border-radius: 10px;
+                margin: 4px;
+                scroll-padding: 20px;
+
+            }
+        }
+
+
+        .img-box {
+            margin: 0;
+            width: 100%;
+        }
+    }
+}
+
+.modal a,
+.slider a {
+    text-decoration: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &::after {
+        content: "";
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        border-top: 2px solid rgba(255, 255, 255, 0.856);
+        border-right: 2px solid rgba(255, 255, 255, 0.856);
+    }
+
+    &.next-btn {
+        right: 3%;
+
+        &::after {
+            transform: rotate(45deg);
+        }
+    }
+
+    &.prev-btn {
+        left: 3%;
+
+        &::after {
+            transform: rotate(-135deg);
+        }
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 1, 29, 0.534);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+
+
+
+    .slide-box {
+        position: relative;
+        width: 70%;
+
+        img {
+            width: 100%;
+            border-radius: 30px;
+
+        }
+
+
+    }
+}
+
+.slider {
+    position: relative;
+
+    .img-container {
+        position: relative;
+        width: 80%;
+        height: 80vh;
+        margin: auto;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            transition: .5s;
+
+            &.active {
+                transform: translateX(0);
+                z-index: 1;
+                opacity: 1;
+            }
+
+            &.next {
+                transform: translateX(-100%);
+            }
+
+            &.prev {
+                transform: translateX(100%);
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        padding: 1rem;
+
+        .img-box {
+            margin: 0;
+        }
+
+    }
+
+    #modal {
+        .slide-box {
+            width: 90%;
+        }
+        a::after{
+            height: 20px;
+            width: 20px;
+        }
+    }
+
+    .container2 {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+
+        .slide-box {
+            width: 250px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .images {
+            width: 100%;
+            margin: 0;
+            flex-direction: row;
+            overflow-y: hidden;
+        }
+    }
+
+    .slider {
+        height: 200px;
+        padding: 0;
+
+        .img-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        a {
+            z-index: 2;
+
+            &::after {
+                height: 20px;
+                width: 20px;
+            }
+        }
+    }
+}
