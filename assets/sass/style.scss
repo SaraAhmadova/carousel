@@ -15,7 +15,7 @@ body {
     .img-box {
         width: 20%;
         margin: 10px;
-
+        cursor: pointer;
         img {
             width: 100%;
         }
@@ -58,7 +58,6 @@ body {
                 border-radius: 10px;
                 margin: 4px;
                 scroll-padding: 20px;
-
             }
         }
 
